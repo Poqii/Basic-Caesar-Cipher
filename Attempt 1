@@ -1,0 +1,21 @@
+alphabet="abcdefghijklmnopqrstuvwxyz"
+number=None
+response=input("What would you like to decode, and by how much?")
+def caesar(text,shift, encrypt=True):
+    if not encrypt: 
+       shift=-shift
+    if not isinstance(shift, int):
+       return "You kinda need to state a whole number."   
+    shifted_alphabet=alphabet[shift:]+alphabet[:shift]
+    table=str.maketrans(alphabet+alphabet.upper(), shifted_alphabet+shifted_alphabet.upper())
+    return text.translate(table)
+category_for_response= []
+words=response.split()
+for word in words:
+    if number is None and word.isdigit():
+      number=int(word)
+    else:
+       category_for_response.append(word)
+shift=number
+text_response=" ".join(category_for_response)
+print(caesar(text_response, number))
