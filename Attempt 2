@@ -1,0 +1,18 @@
+#I'm trying use a library.
+alphabet="abcdefghijklmnopqrstuvwxyz"
+shifted_alphabet=alphabet[shift:]+[:shift]
+import random
+shift=random.randint(1-25)
+def caesar(text, shift):
+   if 'decrypt' or 'decode' in text:
+        shift=-shift
+   table=str.maketrans(alphabet+alphabet.upper(), shifted_alphabet+shifted_alphabet.upper())
+   return text.translate(table)
+response=input("What would you like to decode/encode today?")
+new_text=caesar(response)
+if not all(x in response for x in ('decode','decrypt', 'encrypt', 'encode')):
+   print("Please state what you want to do with the text.")
+else:
+   print(f"Your new text is{new_text}")
+
+# I realized that the words 'decrypt' etc. would also be encrypted but it'll be solved on a later day.
