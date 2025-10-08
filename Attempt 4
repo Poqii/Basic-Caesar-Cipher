@@ -1,0 +1,24 @@
+import random
+alphabet="abcdefghijklmnopqrstuvwxyz"
+shift=random.randint(1,25)
+def caesar(text, shift):
+   shifted_alphabet=alphabet[shift:]+ alphabet[:shift]
+   table=str.maketrans(alphabet+alphabet.upper(), shifted_alphabet+shifted_alphabet.upper())
+   return text.translate(table)
+response=input("What would you like to decode/encode today?")
+if not any(x in response for x in ('decode','decrypt', 'encrypt', 'encode')):
+   print("Please state what you want to do with the text.")
+elif 'decrypt' in response or 'decode' in response:
+        shift=-shift
+        new_text=caesar(response, shift)
+else:
+   words=response.split()
+   if any(x in words for x in("decrypt", "decode", "encrypt","encode")):
+        words.remove("decrypt")
+        words.remove("decode")
+        words.remove("encode")
+        words.remove("encrypt")
+        new=" ".join(words)
+   else:
+        new_text=caesar(new, shift)
+        print(f"Your new text is {new_text}") #I know this code sucks but I'll try again later, this took forever.
